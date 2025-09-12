@@ -118,6 +118,83 @@ src/
 ├── utils/               # Utility functions and constants
 ├── hooks/               # Custom React hooks
 └── assets/              # Images, icons, animations
+
+sports-talent-hunt/                    # Root project directory
+├── App.js                            # Main app entry point
+├── app.json                          # Expo configuration
+├── package.json                      # Dependencies and scripts
+├── babel.config.js                   # Babel configuration
+├── metro.config.js                   # Metro bundler config
+├── tailwind.config.js                # TailwindCSS config
+├── .env.example                      # Environment variables template
+├── README.md                         # Project documentation
+└── src/                              # Source code directory
+    ├── components/                   # Reusable components
+    │   ├── common/                   # Generic components
+    │   │   ├── Button.jsx
+    │   │   ├── Input.jsx
+    │   │   ├── LoadingSpinner.jsx
+    │   │   ├── Modal.jsx
+    │   │   └── ProgressBar.jsx
+    │   ├── ui/                       # Specific UI components
+    │   │   ├── ScoreCard.jsx
+    │   │   ├── VideoPlayer.jsx
+    │   │   ├── FeedbackAccordion.jsx
+    │   │   ├── ContestCard.jsx
+    │   │   ├── PlayerCard.jsx
+    │   │   ├── RoadmapStepper.jsx
+    │   │   └── LeaderboardItem.jsx
+    │   └── layout/                   # Layout components
+    │       ├── SafeAreaWrapper.jsx
+    │       └── Header.jsx
+    ├── screens/                      # Screen components
+    │   ├── auth/                     # Authentication screens
+    │   │   ├── LoginScreen.jsx
+    │   │   ├── SignupScreen.jsx
+    │   │   └── RoleSelectionScreen.jsx
+    │   ├── player/                   # Player screens
+    │   │   ├── HomeScreen.jsx
+    │   │   ├── UploadScreen.jsx
+    │   │   ├── AnalysisResultScreen.jsx
+    │   │   ├── ProfileScreen.jsx
+    │   │   └── ContestsScreen.jsx
+    │   ├── coach/                    # Coach screens
+    │   ├── scout/                    # Scout screens
+    │   ├── govt/                     # Government screens
+    │   └── common/                   # Shared screens
+    │       ├── CommunityScreen.jsx
+    │       ├── LeaderboardScreen.jsx
+    │       └── NotificationsScreen.jsx
+    ├── navigation/                   # Navigation setup
+    │   ├── AppNavigator.jsx
+    │   ├── AuthNavigator.jsx
+    │   ├── PlayerNavigator.jsx
+    │   ├── CoachNavigator.jsx
+    │   ├── ScoutNavigator.jsx
+    │   └── GovtNavigator.jsx
+    ├── store/                        # Redux store
+    │   ├── index.js
+    │   ├── slices/
+    │   │   ├── authSlice.js
+    │   │   ├── videoSlice.js
+    │   │   ├── contestSlice.js
+    │   │   └── userSlice.js
+    │   └── api/                      # API functions
+    │       ├── authApi.js
+    │       ├── videoApi.js
+    │       └── contestApi.js
+    ├── utils/                        # Utility functions
+    │   ├── constants.js
+    │   ├── helpers.js
+    │   └── storage.js
+    ├── hooks/                        # Custom React hooks
+    │   ├── useAuth.js
+    │   ├── useVideo.js
+    │   └── usePermissions.js
+    └── assets/                       # Static assets
+        ├── images/
+        ├── icons/
+        └── animations/
 ```
 
 ## Key Features Implementation

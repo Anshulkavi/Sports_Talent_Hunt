@@ -1,32 +1,39 @@
 // src/screens/auth/LoginScreen.jsx
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { useDispatch } from 'react-redux';
-import { showMessage } from 'react-native-flash-message';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import { showMessage } from "react-native-flash-message";
 
-import SafeAreaWrapper from '../../components/layout/SafeAreaWrapper';
-import Input from '../../components/common/Input';
-import Button from '../../components/common/Button';
-import { loginUser } from '../../store/slices/authSlice';
+import SafeAreaWrapper from "../../components/layout/SafeAreaWrapper";
+import Input from "../../components/common/Input";
+import Button from "../../components/common/Button";
+import { loginUser } from "../../store/slices/authSlice";
 
 const LoginScreen = ({ navigation }) => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleLogin = async () => {
     if (!formData.email || !formData.password) {
       showMessage({
-        message: 'Please fill in all fields',
-        type: 'warning'
+        message: "Please enter email and password",
+        type: "warning",
       });
       return;
     }
@@ -35,13 +42,15 @@ const LoginScreen = ({ navigation }) => {
     try {
       await dispatch(loginUser(formData)).unwrap();
       showMessage({
-        message: 'Login successful!',
-        type: 'success'
+        message: "Login successful!",
+        type: "success",
       });
+      // navigate after login if needed
+      // navigation.navigate("Home");
     } catch (error) {
       showMessage({
-        message: error.message || 'Login failed',
-        type: 'danger'
+        message: error.message || "Login failed",
+        type: "danger",
       });
     } finally {
       setLoading(false);
@@ -50,8 +59,8 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <SafeAreaWrapper className="bg-white">
-      <KeyboardAvoidingView 
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
         className="flex-1"
       >
         <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
@@ -59,30 +68,22 @@ const LoginScreen = ({ navigation }) => {
             {/* Header */}
             <View className="items-center mb-12">
               <View className="w-20 h-20 bg-primary-100 rounded-full items-center justify-center mb-4">
-                <Ionicons name="fitness" size={32} color="#22c55e" />
+                <Ionicons name="log-in" size={32} color="#22c55e" />
               </View>
               <Text className="text-2xl font-bold text-gray-900 mb-2">
-                Create Account
+                Welcome Back
               </Text>
               <Text className="text-gray-600 text-center">
-                Join the sports talent community
+                Sign in to continue
               </Text>
             </View>
 
             {/* Form */}
             <View className="mb-6">
               <Input
-                label="Full Name"
-                value={formData.name}
-                onChangeText={(value) => handleInputChange('name', value)}
-                placeholder="Enter your full name"
-                icon={<Ionicons name="person-outline" size={20} color="#6b7280" />}
-              />
-
-              <Input
                 label="Email"
                 value={formData.email}
-                onChangeText={(value) => handleInputChange('email', value)}
+                onChangeText={(value) => handleInputChange("email", value)}
                 placeholder="Enter your email"
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -90,46 +91,30 @@ const LoginScreen = ({ navigation }) => {
               />
 
               <Input
-                label="Phone Number"
-                value={formData.phone}
-                onChangeText={(value) => handleInputChange('phone', value)}
-                placeholder="Enter your phone number"
-                keyboardType="phone-pad"
-                icon={<Ionicons name="call-outline" size={20} color="#6b7280" />}
-              />
-
-              <Input
                 label="Password"
                 value={formData.password}
-                onChangeText={(value) => handleInputChange('password', value)}
-                placeholder="Create a password"
+                onChangeText={(value) => handleInputChange("password", value)}
+                placeholder="Enter your password"
                 secureTextEntry
-                icon={<Ionicons name="lock-closed-outline" size={20} color="#6b7280" />}
-              />
-
-              <Input
-                label="Confirm Password"
-                value={formData.confirmPassword}
-                onChangeText={(value) => handleInputChange('confirmPassword', value)}
-                placeholder="Confirm your password"
-                secureTextEntry
-                icon={<Ionicons name="lock-closed-outline" size={20} color="#6b7280" />}
+                icon={
+                  <Ionicons name="lock-closed-outline" size={20} color="#6b7280" />
+                }
               />
             </View>
 
-            {/* Sign Up Button */}
+            {/* Login Button */}
             <Button
-              title="Create Account"
-              onPress={handleSignup}
+              title="Sign In"
+              onPress={handleLogin}
               loading={loading}
               className="mb-6"
             />
 
-            {/* Login Link */}
+            {/* Signup Link */}
             <View className="flex-row items-center justify-center">
-              <Text className="text-gray-600">Already have an account? </Text>
-              <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                <Text className="text-primary-500 font-semibold">Sign In</Text>
+              <Text className="text-gray-600">Don’t have an account? </Text>
+              <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
+                <Text className="text-primary-500 font-semibold">Sign Up</Text>
               </TouchableOpacity>
             </View>
           </View>

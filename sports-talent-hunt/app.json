@@ -13,16 +13,15 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
       "supportsTablet": true,
       "infoPlist": {
         "NSCameraUsageDescription": "This app needs access to camera to record sports videos.",
         "NSMicrophoneUsageDescription": "This app needs access to microphone to record videos with audio."
       }
     },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -44,7 +43,8 @@
         {
           "cameraPermission": "Allow Sports TalentHunt to access your camera to record sports videos."
         }
-      ]
+      ],
+      "expo-font"
     ]
   }
 }

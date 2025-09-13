@@ -1,14 +1,19 @@
 // src/utils/constants.js
+export const API_BASE_URL = __DEV__ 
+  ? 'http://localhost:8000/api'  // Development
+  : 'https://api.sportstalenthunt.com'; // Production
 
-export const SPORTS = [
-  { id: 'cricket', name: 'Cricket', icon: 'baseball' },
+export const SPORTS_LIST = [
+  { id: 'cricket', name: 'Cricket', icon: 'fitness' },
   { id: 'football', name: 'Football', icon: 'football' },
   { id: 'basketball', name: 'Basketball', icon: 'basketball' },
   { id: 'tennis', name: 'Tennis', icon: 'tennisball' },
-  { id: 'badminton', name: 'Badminton', icon: 'disc' },
-  { id: 'swimming', name: 'Swimming', icon: 'water' },
+  { id: 'badminton', name: 'Badminton', icon: 'fitness' },
   { id: 'athletics', name: 'Athletics', icon: 'walk' },
-  { id: 'hockey', name: 'Hockey', icon: 'american-football' },
+  { id: 'volleyball', name: 'Volleyball', icon: 'fitness' },
+  { id: 'hockey', name: 'Hockey', icon: 'fitness' },
+  { id: 'swimming', name: 'Swimming', icon: 'water' },
+  { id: 'wrestling', name: 'Wrestling', icon: 'fitness' }
 ];
 
 export const USER_ROLES = {
@@ -16,82 +21,36 @@ export const USER_ROLES = {
   COACH: 'coach',
   SCOUT: 'scout',
   GOVT: 'govt',
-  SPONSOR: 'sponsor',
+  SPONSOR: 'sponsor'
 };
 
-export const VIDEO_TYPES = [
-  { id: 'drill', name: 'Practice Drill', description: 'Training exercises and drills' },
-  { id: 'match', name: 'Match Highlight', description: 'Game performance clips' },
-  { id: 'technique', name: 'Technique Demo', description: 'Specific skill demonstration' },
-  { id: 'fitness', name: 'Fitness Test', description: 'Physical conditioning assessment' },
-];
+export const CONTEST_STATUS = {
+  UPCOMING: 'upcoming',
+  ACTIVE: 'active',
+  ENDED: 'ended',
+  CANCELLED: 'cancelled'
+};
 
-export const ANALYSIS_METRICS = [
-  'technique',
-  'speed',
-  'accuracy',
-  'consistency',
-  'power',
-  'agility',
-  'endurance',
-  'coordination',
-];
-
-export const CONTEST_TYPES = [
-  'monthly_challenge',
-  'skill_contest',
-  'regional_championship',
-  'national_qualifier',
-  'scholarship_hunt',
-];
+export const ANALYSIS_STATUS = {
+  PENDING: 'pending',
+  PROCESSING: 'processing',
+  COMPLETED: 'completed',
+  FAILED: 'failed'
+};
 
 export const NOTIFICATION_TYPES = {
   ANALYSIS_COMPLETE: 'analysis_complete',
-  CONTEST_INVITE: 'contest_invite',
-  SCORE_IMPROVEMENT: 'score_improvement',
-  COACH_MESSAGE: 'coach_message',
+  CONTEST_REMINDER: 'contest_reminder',
+  ACHIEVEMENT: 'achievement',
   GOVT_VERIFICATION: 'govt_verification',
+  SOCIAL: 'social',
+  SYSTEM: 'system'
 };
 
-export const API_ENDPOINTS = {
-  AUTH: {
-    LOGIN: '/auth/login',
-    SIGNUP: '/auth/signup',
-    REFRESH: '/auth/refresh',
-  },
-  VIDEO: {
-    UPLOAD: '/video/upload',
-    ANALYZE: '/video/analyze',
-    LIST: '/video/list',
-    DELETE: '/video/delete',
-  },
-  CONTESTS: {
-    LIST: '/contests',
-    JOIN: '/contests/join',
-    LEADERBOARD: '/contests/leaderboard',
-  },
-  USER: {
-    PROFILE: '/user/profile',
-    STATS: '/user/stats',
-    HISTORY: '/user/history',
-  },
-};
-
-export const THEME_COLORS = {
-  primary: {
-    50: '#f0fdf4',
-    100: '#dcfce7',
-    500: '#22c55e',
-    600: '#16a34a',
-    700: '#15803d',
-    900: '#14532d',
-  },
-  secondary: {
-    50: '#fff7ed',
-    100: '#ffedd5',
-    500: '#f97316',
-    600: '#ea580c',
-    700: '#c2410c',
-    900: '#9a3412',
-  },
+export const SCORE_RANGES = {
+  EXCELLENT: { min: 90, max: 100, label: 'Excellent', color: '#22c55e' },
+  VERY_GOOD: { min: 80, max: 89, label: 'Very Good', color: '#16a34a' },
+  GOOD: { min: 70, max: 79, label: 'Good', color: '#65a30d' },
+  AVERAGE: { min: 60, max: 69, label: 'Average', color: '#f97316' },
+  NEEDS_WORK: { min: 0, max: 59, label: 'Needs Work', color: '#ef4444' }
 };
